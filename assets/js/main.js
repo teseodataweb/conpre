@@ -1,26 +1,32 @@
-// Preloader functionality
-window.addEventListener('load', function() {
-    // Add 'loaded' class to body to trigger CSS animations
-    document.body.classList.add('loaded');
+(function ($) {
+    "use strict";
 
-    // Remove loader from DOM after animation completes
-    setTimeout(function() {
-        const loaderWrapper = document.querySelector('.loader-wrapper');
-        if (loaderWrapper) {
-            loaderWrapper.remove();
-        }
-    }, 1300); // Wait for CSS transition to complete (0.3s + 1s from CSS)
-});
 
-// Fallback: Remove loader after max 3 seconds even if load event doesn't fire
-setTimeout(function() {
-    if (!document.body.classList.contains('loaded')) {
-        document.body.classList.add('loaded');
-        setTimeout(function() {
-            const loaderWrapper = document.querySelector('.loader-wrapper');
-            if (loaderWrapper) {
-                loaderWrapper.remove();
-            }
-        }, 1300);
+    // Awards One Hover Img
+    const link = document.querySelectorAll(".awards-one__single");
+    const linkHoverReveal = document.querySelectorAll(".awards-one__img");
+    const linkImages = document.querySelectorAll(".awards-one__img-hover");
+    for (let i = 0; i < link.length; i++) {
+        link[i].addEventListener("mousemove", (e) => {
+            linkHoverReveal[i].style.opacity = 1;
+            linkHoverReveal[i].style.transform = `translate(-250%, -50% ) rotate(5deg)`;
+            linkImages[i].style.transform = "scale(1, 1)";
+            linkHoverReveal[i].style.left = e.clientX + "px";
+        });
+        link[i].addEventListener("mouseleave", (e) => {
+            linkHoverReveal[i].style.opacity = 0;
+            linkHoverReveal[i].style.transform = `translate(-50%, -50%) rotate(-5deg)`;
+            linkImages[i].style.transform = "scale(0.8, 0.8)";
+        });
     }
-}, 3000);
+
+
+
+
+
+
+
+
+
+
+})(jQuery);

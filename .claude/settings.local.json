@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(python fix-all-pages.py:*)",
+      "Bash(for file in *.html)",
+      "Bash(do grep -q \"assets/js/main.js\\|assets/js/main.html\" \"$file\")",
+      "Bash(echo:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
